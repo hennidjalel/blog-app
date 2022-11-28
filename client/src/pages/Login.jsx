@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { axiosInstance } from '../axios';
 
 const Login = () => {
 
@@ -22,7 +23,7 @@ const Login = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            await axios.get("http://localhost:8000/api/auth/login", input)
+            await axiosInstance.get("/api/auth/login", input)
             navigate("/")
         } catch (err) {
             setError(err.response.data)
